@@ -8,6 +8,8 @@
 </head>
 <body>
     <h1>蛋蛋的神曲</title></h1>
+    <div id="countdown"></div>
+    <div id="error">頁面已過期，請刷新頁面。</div>
     <div>
         <h1>神曲1 地獄篇</h1>
         <img src="https://cdnec.sanmin.com.tw/product_images/986/986450298.jpg">
@@ -41,5 +43,38 @@
         <li>預約人數 0</li>
         <p>連結   <a href="https://lib.tnml.tn.edu.tw/webpac/content.cfm?mid=912717&m=as&k0=%E4%B9%9D%E6%AD%8C&t0=p&c0=and&k1=%E7%A5%9E%E6%9B%B2&t1=t&c1=and&list_num=10&current_page=1&mt=&at=&sj=&py=&pr=&it=&lr=&lg=&si=">https://lib.tnml.tn.edu.tw/webpac/content.cfm?mid=912717&m=as&k0=%E4%B9%9D%E6%AD%8C&t0=p&c0=and&k1=%E7%A5%9E%E6%9B%B2&t1=t&c1=and&list_num=10&current_page=1&mt=&at=&sj=&py=&pr=&it=&lr=&lg=&si=</a></p>
     </div>
+
+    <script>
+        // 設定過期時間（例如：2024年8月16日 00:00:00）
+        const expiryDate = new Date('2024-08-16T00:00:00').getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const timeRemaining = expiryDate - now;
+
+            if (timeRemaining <= 0) {
+                // 時間到達後，顯示錯誤信息並關閉網頁
+                document.getElementById('countdown').style.display = 'none';
+                document.getElementById('error').style.display = 'block';
+                // 使用替代方法顯示錯誤信息，避免清除頁面
+                document.body.innerHTML = '<h1>頁面已過期</h1>';
+            } else {
+                // 計算倒數剩餘時間
+                const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+                // 更新顯示的倒數計時器
+                document.getElementById('countdown').innerHTML = `距離網站關閉剩餘時間: ${days} 天 ${hours} 小時 ${minutes} 分鐘 ${seconds} 秒`;
+
+                // 每秒更新一次倒數計時器
+                setTimeout(updateCountdown, 1000);
+            }
+        }
+
+        // 初始化倒數計時器
+        updateCountdown();
+    </script>
 </body>
 </html>
