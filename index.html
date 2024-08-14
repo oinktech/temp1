@@ -57,7 +57,7 @@
                 document.getElementById('countdown').style.display = 'none';
                 document.getElementById('error').style.display = 'block';
                 // 使用替代方法顯示錯誤信息，避免清除頁面
-                document.body.innerHTML = '<h1>頁面已過期</h1>';
+                document.body.innerHTML = '<h1>頁面已過期,請聯繫網站所有者 : <a href="mailto:oinktech2024@gmail.com?subject=重啟請求&body=您好，請重啟您的網站。">發送郵件</a></h1>';
             } else {
                 // 計算倒數剩餘時間
                 const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
