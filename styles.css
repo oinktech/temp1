@@ -125,3 +125,13 @@ a:hover {
         font-size: 0.9em;
     }
 }
+#countdown {
+    font-size: 24px;
+    margin: 20px;
+}
+#error {
+    display: none;
+    font-size: 24px;
+    color: red;
+    margin: 20px;
+}
